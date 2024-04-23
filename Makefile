@@ -1,7 +1,9 @@
 CC=gcc
 CFLAGS=-I.
-DEPS=
-OBJ=server.o
+
+DEPS=server.h http.h file.h compare.h
+OBJ=server.o http.o file.o compare.o
+
 USERID=123456789
 
 %.o: %.c $(DEPS)
@@ -12,7 +14,7 @@ server: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
 clean:
-	rm -rf *.o server *.tar.gz
+	rm -rf *.o server *.tar.gz *.swp
 
 dist: tarball
 tarball: clean
